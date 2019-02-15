@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./SearchForm.css";
 
-export default class Searchbar extends Component {
+export default class SearchForm extends Component {
   state = {
     input: null,
     results: [],

@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "alias": "",
+    "name": "https://will-starwars.now.sh/",
+    "routes": [
+        {
+          "src": "^/static/(.*)",
+          "dest": "/static/$1"
+        },
+        {
+          "src": ".*",
+          "dest": "/index.html"
+        }
+    ]
+  }
