@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-// import "./Searchbar.css";
+import "./SearchForm.css";
 
 export default class Searchbar extends Component {
   state = {
-    input: "",
-    results: []
+    input: null,
+    results: [],
   };
 
   // form submission handling for search input
@@ -14,7 +14,7 @@ export default class Searchbar extends Component {
     e.preventDefault();
     console.log("handle submit ran");
 
-    fetch(`https://swapi.co/api/people/?${this.state.input}`)
+    fetch(`https://swapi.co/api/people/?search=${this.state.input}`)
       .then(res => {
         if (!res.ok) {
           throw Error;
@@ -43,7 +43,7 @@ export default class Searchbar extends Component {
           <input
             className="search-input"
             type="text"
-            placeholder="enter Star Wars character"
+            placeholder="ex: Skywalker"
             required
             onChange={e => this.handleSearch(e.target.value)}
           />
