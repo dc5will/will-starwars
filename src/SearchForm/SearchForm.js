@@ -2,13 +2,10 @@ import React, { Component } from "react";
 // import "./Searchbar.css";
 
 export default class Searchbar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      input: "",
-      results: []
-    };
-  }
+  state = {
+    input: "",
+    results: []
+  };
 
   // form submission handling for search input
   // user story: being able to access API to search for character name
@@ -25,38 +22,46 @@ export default class Searchbar extends Component {
         return res.json();
       })
       .then(data => {
-        return data.results.map(result => result.name);
-      })
-      .then(names =>
         this.setState({
-          results: names
-        })
-      );
+          results: data.results
+        });
+      });
   };
 
   // grab target value from input and change state with user input
-  handleSearch = (searchInput) => {
-      console.log(searchInput);
-      this.setState({
-          input: searchInput
-      })
-  }
-
+  handleSearch = searchInput => {
+    console.log(searchInput);
+    this.setState({
+      input: searchInput
+    });
+  };
 
   render() {
     return (
-      <form className="search-form" onSubmit={e => this.handleSubmit(e)}>
-        <input
-          className="search-input"
-          type="text"
-          placeholder="enter Star Wars character"
-          required
-          onChange={e => this.handleSearch(e.target.value)}
-        />
-        <button type="submit" className="search-button">
-          Search
-        </button>
-      </form>
+      <div className="search-main">
+        <form className="search-form" onSubmit={e => this.handleSubmit(e)}>
+          <input
+            className="search-input"
+            type="text"
+            placeholder="enter Star Wars character"
+            required
+            onChange={e => this.handleSearch(e.target.value)}
+          />
+          <button type="submit" className="search-button">
+            Search
+          </button>
+        </form>
+
+        <ul>
+          {this.state.results.map((result, index) => {
+            return (
+              <li key={index}>
+                <p>{result.name}</p>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     );
   }
 }
