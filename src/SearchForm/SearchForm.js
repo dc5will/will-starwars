@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import SearchApiService from "../services/search-api-service";
-import Helpers from '../services/helpers';
+import Helpers from "../services/helpers";
 import "./SearchForm.css";
 
 export default class SearchForm extends Component {
-  state = {
-    input: "",
-    results: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: "",
+      results: [],
+      searched: false
+    };
+  }
 
   // form submission handling for search input
   // user story: being able to access API to search for character name
@@ -16,7 +20,8 @@ export default class SearchForm extends Component {
     e.preventDefault();
     SearchApiService.getPeople(`${this.state.input}`).then(res => {
       this.setState({
-        results: res.results
+        results: res.results,
+        searched: true
       });
     });
   };
@@ -28,6 +33,25 @@ export default class SearchForm extends Component {
       input: searchInput
     });
   };
+
+  displayResults() {
+    if (this.state.results.length < 1 && this.state.searched) {
+      return <p id="empty-result">No Results Found</p>;
+    }
+    return this.state.results.map((result, index) => (
+      <div className="results-container">
+        <ul>
+          <li className="result-item" key={index}>
+            <p>Name: {result.name}</p>
+            <p>Gender: {result.gender}</p>
+            <p>Height: {Helpers.convertCmToInches(result.height)}</p>
+            <p>Weight: {Helpers.convertKgToLbs(result.mass)}</p>
+            <p>Birthdate: {result.birth_year}</p>
+          </li>
+        </ul>
+      </div>
+    ));
+  }
 
   render() {
     return (
@@ -45,21 +69,8 @@ export default class SearchForm extends Component {
           </button>
         </form>
 
-        <ul>
-          {this.state.results.map((result, index) => {
-            return (
-              <div className='results-container'>
-                <li className='result-item' key={index}>
-                  <p>Name: {result.name}</p>
-                  <p>Gender: {result.gender}</p>
-                  <p>height: {Helpers.convertCmToInches(result.height)}</p>
-                  <p>weight: {Helpers.convertKgToLbs(result.mass)}</p>
-                  <p>birthdate: {result.birth_year}</p>
-                </li>
-              </div>
-            );
-          })}
-        </ul>
+        {this.displayResults()}
+
       </div>
     );
   }

@@ -18,6 +18,10 @@ uL {
     max-width: 400px;
 }
 
+#empty-result {
+    color: #fff;
+}
+
 .search-main {
     margin-left: auto;
     margin-right: auto;

@@ -8,6 +8,7 @@ const Helpers = {
     let inches = Math.round((realFeet - feet) * 12);
     return feet + ' ft ' + inches + ' inches';
   },
+  
   convertKgToLbs(kg) {
     if (isNaN(kg)) {
       return 'unknown'
