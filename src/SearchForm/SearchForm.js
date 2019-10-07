@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SearchApiService from "../services/search-api-service";
+import Helpers from '../services/helpers';
 import "./SearchForm.css";
 
 export default class SearchForm extends Component {
@@ -13,8 +14,6 @@ export default class SearchForm extends Component {
   // access '/people/' endpoint
   handleSubmit = e => {
     e.preventDefault();
-    console.log("handle submit ran");
-
     SearchApiService.getPeople(`${this.state.input}`).then(res => {
       this.setState({
         results: res.results
@@ -50,11 +49,11 @@ export default class SearchForm extends Component {
           {this.state.results.map((result, index) => {
             return (
               <div className='results-container'>
-                <li key={index}>
+                <li className='result-item' key={index}>
                   <p>Name: {result.name}</p>
                   <p>Gender: {result.gender}</p>
-                  <p>height: {result.height}</p>
-                  <p>weight: {result.mass}</p>
+                  <p>height: {Helpers.convertCmToInches(result.height)}</p>
+                  <p>weight: {Helpers.convertKgToLbs(result.mass)}</p>
                   <p>birthdate: {result.birth_year}</p>
                 </li>
               </div>

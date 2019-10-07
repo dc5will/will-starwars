@@ -6,6 +6,18 @@
     color: #FFF;
 }
 
+uL {
+    padding-left: 0;
+}
+
+.result-item {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #FFF;
+    max-width: 400px;
+}
+
 .search-main {
     margin-left: auto;
     margin-right: auto;
