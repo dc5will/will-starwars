@@ -4,7 +4,7 @@ import "./SearchForm.css";
 
 export default class SearchForm extends Component {
   state = {
-    input: '',
+    input: "",
     results: []
   };
 
@@ -49,9 +49,15 @@ export default class SearchForm extends Component {
         <ul>
           {this.state.results.map((result, index) => {
             return (
-              <li key={index}>
-                <p>{result.name}</p>
-              </li>
+              <div className='results-container'>
+                <li key={index}>
+                  <p>Name: {result.name}</p>
+                  <p>Gender: {result.gender}</p>
+                  <p>height: {result.height}</p>
+                  <p>weight: {result.mass}</p>
+                  <p>birthdate: {result.birth_year}</p>
+                </li>
+              </div>
             );
           })}
         </ul>

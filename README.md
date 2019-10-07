@@ -7,8 +7,6 @@ Simple deployed React project searching Star Wars API
 This app allows users to search the Star Wars API for a character name & displays the matching characters
 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
