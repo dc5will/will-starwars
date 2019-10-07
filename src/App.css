@@ -23,7 +23,8 @@
   color: #61dafb;
 }
 
-.container {
+.main-container {
+  margin-top: 100px;
   text-align: center;
 }
 
@@ -33,5 +34,7 @@ ul {
 
 #main-title {
   color: #FFF;
+  font-size: 40px;
+  font-family: 'StarJedi';
 }
 

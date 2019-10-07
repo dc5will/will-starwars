@@ -5,7 +5,7 @@ import "./App.css";
 class App extends Component {
   render() {
     return (
-      <div className="container">
+      <div className="main-container">
         <h1 id='main-title'>Star Wars Search</h1>
 
         <main>

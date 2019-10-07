@@ -13,9 +13,6 @@ export default class SearchForm extends Component {
     };
   }
 
-  // form submission handling for search input
-  // user story: being able to access API to search for character name
-  // access '/people/' endpoint
   handleSubmit = e => {
     e.preventDefault();
     SearchApiService.getPeople(`${this.state.input}`).then(res => {
@@ -26,9 +23,8 @@ export default class SearchForm extends Component {
     });
   };
 
-  // grab target value from input and change state with user input
   handleSearch = searchInput => {
-    console.log(searchInput);
+    // console.log(searchInput);
     this.setState({
       input: searchInput
     });
@@ -53,24 +49,28 @@ export default class SearchForm extends Component {
     ));
   }
 
+  searchForm() {
+    return (
+      <form className="search-form" onSubmit={e => this.handleSubmit(e)}>
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Search Star Wars Character"
+          required
+          onChange={e => this.handleSearch(e.target.value)}
+        />
+        {/* <button type="submit" className="search-button">
+          Search
+        </button> */}
+      </form>
+    );
+  }
+
   render() {
     return (
       <div className="search-main">
-        <form className="search-form" onSubmit={e => this.handleSubmit(e)}>
-          <input
-            className="search-input"
-            type="text"
-            placeholder="ex: Skywalker"
-            required
-            onChange={e => this.handleSearch(e.target.value)}
-          />
-          <button type="submit" className="search-button">
-            Search
-          </button>
-        </form>
-
+        {this.searchForm()}
         {this.displayResults()}
-
       </div>
     );
   }
