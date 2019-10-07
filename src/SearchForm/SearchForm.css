@@ -45,3 +45,23 @@ uL {
     position: relative;
     top: 5px;
 }
+
+@media screen and (max-width: 600px) {
+    #search-input {
+        font-size: 13px;
+        border-radius: 22px;
+        box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .28);
+        height: 36px;
+        width: 50%;
+        opacity: 1;
+        padding-inline-start: 10px;
+    }
+    
+    #search-icon {
+        font-size: 22px;
+        color: #FFF;
+        margin-right: 10px;
+        position: relative;
+        top: 5px;
+    }
+  }

@@ -57,7 +57,7 @@ export default class SearchForm extends Component {
           <input
             id="search-input"
             type="text"
-            placeholder="Search Star Wars Character "
+            placeholder="Search Star Wars"
             required
             onChange={e => this.handleSearch(e.target.value)}
           />
