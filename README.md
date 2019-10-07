@@ -1,8 +1,11 @@
 # Star Wars Search Project
 
-https://will-starwars.now.sh/
+https://will-starwars.now.sh
 
-Simple deployed React project searching Star Wars API
+Simple React project for searching [Star Wars API](https://swapi.co/)
+
+Created with React
+Deployed using Zeit
 
 This app allows users to search the Star Wars API for a character name & displays the matching characters
 

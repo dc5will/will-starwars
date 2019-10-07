@@ -1,7 +1,7 @@
 {
     "version": 2,
     "alias": "",
-    "name": "https://will-starwars.now.sh/",
+    "name": "will-starwars",
     "routes": [
         {
           "src": "^/static/(.*)",
