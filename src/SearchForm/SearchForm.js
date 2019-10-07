@@ -52,16 +52,16 @@ export default class SearchForm extends Component {
   searchForm() {
     return (
       <form className="search-form" onSubmit={e => this.handleSubmit(e)}>
-        <input
-          id="search-input"
-          type="text"
-          placeholder="Search Star Wars Character"
-          required
-          onChange={e => this.handleSearch(e.target.value)}
-        />
-        {/* <button type="submit" className="search-button">
-          Search
-        </button> */}
+        <div className="input-wrapper">
+          <i id="search-icon" className="fas fa-search" />
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search Star Wars Character "
+            required
+            onChange={e => this.handleSearch(e.target.value)}
+          />
+        </div>
       </form>
     );
   }

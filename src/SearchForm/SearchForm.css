@@ -37,3 +37,11 @@ uL {
     opacity: 1;
     padding-inline-start: 20px;
 }
+
+#search-icon {
+    font-size: 28px;
+    color: #FFF;
+    margin-right: 10px;
+    position: relative;
+    top: 5px;
+}
