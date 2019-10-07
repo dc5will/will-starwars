@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import SearchApiService from "../services/search-api-service";
 import "./SearchForm.css";
 
 export default class SearchForm extends Component {
   state = {
-    input: null,
-    results: [],
+    input: '',
+    results: []
   };
 
   // form submission handling for search input
@@ -14,18 +15,11 @@ export default class SearchForm extends Component {
     e.preventDefault();
     console.log("handle submit ran");
 
-    fetch(`https://swapi.co/api/people/?search=${this.state.input}`)
-      .then(res => {
-        if (!res.ok) {
-          throw Error;
-        }
-        return res.json();
-      })
-      .then(data => {
-        this.setState({
-          results: data.results
-        });
+    SearchApiService.getPeople(`${this.state.input}`).then(res => {
+      this.setState({
+        results: res.results
       });
+    });
   };
 
   // grab target value from input and change state with user input
